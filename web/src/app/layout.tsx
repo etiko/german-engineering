@@ -1,0 +1,65 @@
+import type { Metadata } from "next";
+import { Barlow_Condensed, Manrope } from "next/font/google";
+import { SiteFooter } from "@/components/layout/site-footer";
+import { SiteHeader } from "@/components/layout/site-header";
+import { siteConfig } from "@/lib/site";
+import "./globals.css";
+
+const manrope = Manrope({
+  variable: "--font-sans",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const barlowCondensed = Barlow_Condensed({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  display: "swap",
+});
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: `${siteConfig.name} | Used Cars and Vehicle Services`,
+    template: `%s | ${siteConfig.shortName}`,
+  },
+  description: siteConfig.description,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_GB",
+    siteName: siteConfig.name,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    url: "/",
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html
+      lang="en"
+      className={`${manrope.variable} ${barlowCondensed.variable} h-full antialiased`}
+    >
+      <body className="min-h-full">
+        <a className="skip-link" href="#main-content">
+          Skip to main content
+        </a>
+        <div className="flex min-h-screen flex-col">
+          <SiteHeader />
+          <main id="main-content" className="flex-1">
+            {children}
+          </main>
+          <SiteFooter />
+        </div>
+      </body>
+    </html>
+  );
+}
