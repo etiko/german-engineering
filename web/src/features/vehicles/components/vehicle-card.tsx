@@ -21,7 +21,7 @@ export function VehicleCard({
     <article
       className={
         isDark
-          ? "group flex h-full flex-col overflow-hidden border border-white/15 bg-[#0d1d2d] text-white transition duration-300 hover:-translate-y-1 hover:border-[#46a7e8] hover:shadow-[0_20px_50px_rgba(0,0,0,0.28)]"
+          ? "group flex h-full flex-col overflow-hidden border border-white/12 bg-[#19232d] text-white transition duration-300 hover:-translate-y-1 hover:border-[#6f8fa3] hover:shadow-[0_20px_50px_rgba(0,0,0,0.28)]"
           : "group flex h-full flex-col overflow-hidden border border-[#dce5ec] bg-white transition duration-300 hover:-translate-y-1 hover:border-[#9fb5c5] hover:shadow-[0_18px_45px_rgba(8,20,33,0.12)]"
       }
     >
@@ -29,7 +29,7 @@ export function VehicleCard({
         href={`/vehicles/${vehicle.slug}`}
         aria-label={`View ${vehicle.year} ${vehicle.make} ${vehicle.model}`}
         className={`relative block aspect-[4/3] shrink-0 overflow-hidden ${
-          isDark ? "bg-[#142a40]" : "bg-[#dce5ec]"
+          isDark ? "bg-[#24313c]" : "bg-[#dce5ec]"
         }`}
       >
         <Image
@@ -41,7 +41,7 @@ export function VehicleCard({
         />
         <span
           className={`absolute left-4 top-4 px-3 py-2 text-[0.68rem] font-extrabold uppercase tracking-[0.14em] text-white ${
-            isDark ? "bg-[#1266a8]" : "bg-[#081421]"
+            isDark ? "bg-[#36546a]" : "bg-[#081421]"
           }`}
         >
           {vehicle.status}
@@ -51,7 +51,7 @@ export function VehicleCard({
       <div className="flex flex-1 flex-col p-5">
         <p
           className={`text-xs font-extrabold uppercase tracking-[0.16em] ${
-            isDark ? "text-[#73c6fb]" : "text-[#1266a8]"
+            isDark ? "text-[#9ab4c4]" : "text-[#1266a8]"
           }`}
         >
           {vehicle.year} {vehicle.bodyType}
@@ -64,7 +64,7 @@ export function VehicleCard({
           <Link
             href={`/vehicles/${vehicle.slug}`}
             className={
-              isDark ? "hover:text-[#73c6fb]" : "hover:text-[#1266a8]"
+              isDark ? "hover:text-[#c2d4de]" : "hover:text-[#1266a8]"
             }
           >
             {vehicle.make} {vehicle.model}
@@ -145,7 +145,7 @@ export function VehicleCard({
             href={`/vehicles/${vehicle.slug}`}
             className={`text-xs font-extrabold uppercase tracking-[0.12em] ${
               isDark
-                ? "text-[#73c6fb] hover:text-white"
+                ? "text-[#a9c1cf] hover:text-white"
                 : "text-[#1266a8] hover:text-[#081421]"
             }`}
           >

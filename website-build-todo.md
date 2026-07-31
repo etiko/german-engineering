@@ -490,7 +490,7 @@ src/
 - [ ] [P0] Implement accessible mobile menu.
 - [ ] [P0] Implement breadcrumbs.
 - [ ] [P0] Implement footer with legal and business information.
-- [ ] [P0] Implement persistent mobile contact bar.
+- [x] [P0] Implement persistent mobile contact bar.
 - [ ] [P0] Implement cookie preferences entry point.
 - [ ] [P0] Implement skip link and keyboard focus management.
 
@@ -525,7 +525,7 @@ src/
 - [ ] [P0] Build sales and service journey split.
 - [ ] [P0] Build finance and part-exchange section.
 - [ ] [P0] Build reviews section with source links.
-- [ ] [P0] Build location, opening hours, directions, and contact section.
+- [x] [P0] Build location, opening hours, directions, and contact section.
 - [ ] [P0] Add page metadata and structured data.
 
 ### Stock listing
@@ -607,7 +607,7 @@ src/
 - [ ] [P0] Build reviews page.
 - [ ] [P0] Build about and team page.
 - [ ] [P0] Build vacancies page.
-- [ ] [P0] Build contact and find-us page.
+- [x] [P0] Build contact and find-us page.
 - [ ] [P0] Build guide listing and article templates.
 - [ ] [P0] Build FAQ presentation.
 - [ ] [P0] Build privacy, cookies, terms, complaints, and finance-disclosure pages.

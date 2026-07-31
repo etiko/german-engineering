@@ -36,7 +36,7 @@ export function BackToTop() {
       aria-label="Back to top"
       aria-hidden={!isVisible}
       tabIndex={isVisible ? 0 : -1}
-      className={`fixed bottom-5 right-5 z-40 inline-flex min-h-12 items-center justify-center gap-2 border border-white/20 bg-[#1266a8] px-4 text-white shadow-[0_14px_35px_rgba(8,20,33,0.3)] transition duration-200 hover:-translate-y-1 hover:bg-[#0b4f82] sm:bottom-7 sm:right-7 ${
+      className={`fixed bottom-20 right-5 z-40 inline-flex min-h-12 items-center justify-center gap-2 border border-white/20 bg-[#1266a8] px-4 text-white shadow-[0_14px_35px_rgba(8,20,33,0.3)] transition duration-200 hover:-translate-y-1 hover:bg-[#0b4f82] sm:right-7 lg:bottom-7 ${
         isVisible
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-4 opacity-0"

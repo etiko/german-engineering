@@ -20,7 +20,7 @@ Next.js for method-preserving permanent redirects.
 | `/cat/{body}/{id}/` | `/vehicles?body={body}` |
 | `/sellyourcarform/` | `/sell-your-car` |
 | `/partexchange/` | `/sell-your-car` |
-| `/find_us/` | `/#contact` |
+| `/find_us/` | `/contact` |
 | Servicing/bodyshop hub and current workshop subpages | `/services` |
 
 Legacy make and body identifiers are normalized so values such as

@@ -102,7 +102,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/find_us",
-        destination: "/#contact",
+        destination: "/contact",
         permanent: true,
       },
       ...[
@@ -130,7 +130,7 @@ const nextConfig: NextConfig = {
           source: `${redirect.source}/`,
         },
       ]),
-      ...["vehicles", "finance", "sell-your-car", "services"].map(
+      ...["vehicles", "finance", "sell-your-car", "services", "contact"].map(
         (route) => ({
           source: `/${route}/`,
           destination: `/${route}`,

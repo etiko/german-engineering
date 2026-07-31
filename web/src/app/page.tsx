@@ -149,11 +149,11 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="section-grid-dark overflow-hidden bg-[#081421] py-20 text-white md:py-28">
+      <section className="section-grid-dark overflow-hidden bg-[#111820] py-20 text-white md:py-28">
         <div className="shell">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div className="max-w-3xl">
-              <p className="text-sm font-extrabold uppercase tracking-[0.2em] text-[#73c6fb]">
+              <p className="text-sm font-extrabold uppercase tracking-[0.2em] text-[#9ab4c4]">
                 Available now
               </p>
               <h2 className="font-display mt-3 text-5xl font-bold uppercase tracking-[-0.02em] text-white md:text-6xl">
@@ -318,6 +318,13 @@ export default async function HomePage() {
               Speak with the team about current stock, vehicle sourcing,
               servicing, diagnostics or bodywork.
             </p>
+            <Link
+              href="/contact"
+              className="cta cta-dark mt-8 inline-flex"
+            >
+              <span>Contact and directions</span>
+              <ArrowRightIcon className="cta-arrow" />
+            </Link>
           </div>
 
           <div className="border border-[#dce5ec] bg-[#f7f9fb] p-7 md:p-9">

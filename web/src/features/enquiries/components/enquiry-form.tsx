@@ -4,7 +4,7 @@ import type { FormEvent } from "react";
 import { ArrowRightIcon } from "@/components/ui/icons";
 
 type EnquiryFormProps = {
-  kind: "finance" | "valuation";
+  kind: "contact" | "finance" | "valuation";
   recipient: string;
 };
 
@@ -28,6 +28,8 @@ function pounds(value: string): string {
 export function EnquiryForm({ kind, recipient }: EnquiryFormProps) {
   const idPrefix = `${kind}-enquiry`;
   const isValuation = kind === "valuation";
+  const isFinance = kind === "finance";
+  const isContact = kind === "contact";
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -48,18 +50,25 @@ export function EnquiryForm({ kind, recipient }: EnquiryFormProps) {
           ["Service history", valueFrom(formData, "serviceHistory")],
           ["Outstanding finance", valueFrom(formData, "outstandingFinance")],
         ]
-      : [
-          ["Vehicle or stock reference", valueFrom(formData, "vehicle")],
-          ["Available deposit", pounds(valueFrom(formData, "deposit"))],
-          ["Target monthly budget", pounds(valueFrom(formData, "monthlyBudget"))],
-        ];
+      : isFinance
+        ? [
+            ["Vehicle or stock reference", valueFrom(formData, "vehicle")],
+            ["Available deposit", pounds(valueFrom(formData, "deposit"))],
+            [
+              "Target monthly budget",
+              pounds(valueFrom(formData, "monthlyBudget")),
+            ],
+          ]
+        : [["Enquiry type", valueFrom(formData, "enquiryType")]];
 
     const body = [
       `Hello German Engineering,`,
       "",
       isValuation
         ? "I would like to request a valuation for my vehicle."
-        : "I would like to discuss vehicle finance.",
+        : isFinance
+          ? "I would like to discuss vehicle finance."
+          : "I would like to make a general enquiry.",
       "",
       `Name: ${name}`,
       `Email: ${email}`,
@@ -68,12 +77,16 @@ export function EnquiryForm({ kind, recipient }: EnquiryFormProps) {
       ...enquiryDetails
         .filter(([, value]) => value)
         .map(([label, value]) => `${label}: ${value}`),
-      ...(message ? ["", "Additional details:", message] : []),
+      ...(message
+        ? ["", isContact ? "Message:" : "Additional details:", message]
+        : []),
     ].join("\n");
 
     const subject = isValuation
       ? `Vehicle valuation enquiry - ${valueFrom(formData, "registration")}`
-      : `Vehicle finance enquiry - ${valueFrom(formData, "vehicle")}`;
+      : isFinance
+        ? `Vehicle finance enquiry - ${valueFrom(formData, "vehicle")}`
+        : `Website enquiry - ${valueFrom(formData, "enquiryType")}`;
 
     window.location.assign(
       `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,
@@ -192,7 +205,7 @@ export function EnquiryForm({ kind, recipient }: EnquiryFormProps) {
             </select>
           </div>
         </div>
-      ) : (
+      ) : isFinance ? (
         <div className="grid gap-5 sm:grid-cols-2">
           <div className="sm:col-span-2">
             <label className={labelClassName} htmlFor={`${idPrefix}-vehicle`}>
@@ -255,6 +268,31 @@ export function EnquiryForm({ kind, recipient }: EnquiryFormProps) {
               />
             </div>
           </div>
+        </div>
+      ) : (
+        <div>
+          <label
+            className={labelClassName}
+            htmlFor={`${idPrefix}-enquiry-type`}
+          >
+            What can we help with? *
+          </label>
+          <select
+            className={fieldClassName}
+            id={`${idPrefix}-enquiry-type`}
+            name="enquiryType"
+            defaultValue=""
+            required
+          >
+            <option value="" disabled>
+              Select an enquiry type
+            </option>
+            <option value="Vehicle sales">Vehicle sales</option>
+            <option value="Vehicle sourcing">Vehicle sourcing</option>
+            <option value="Servicing or repairs">Servicing or repairs</option>
+            <option value="Bodywork">Bodywork</option>
+            <option value="General question">General question</option>
+          </select>
         </div>
       )}
 
@@ -319,16 +357,19 @@ export function EnquiryForm({ kind, recipient }: EnquiryFormProps) {
 
       <div>
         <label className={labelClassName} htmlFor={`${idPrefix}-message`}>
-          Additional details
+          {isContact ? "Your message *" : "Additional details"}
         </label>
         <textarea
           className={`${fieldClassName} min-h-36 py-4`}
           id={`${idPrefix}-message`}
           name="message"
+          required={isContact}
           placeholder={
             isValuation
               ? "Service history, outstanding finance, damage or anything else we should know."
-              : "Tell us about your requirements or the best time to contact you."
+              : isFinance
+                ? "Tell us about your requirements or the best time to contact you."
+                : "Tell us how the team can help."
           }
         />
       </div>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Barlow_Condensed, Manrope } from "next/font/google";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { MobileContactBar } from "@/components/layout/mobile-contact-bar";
 import { BackToTop } from "@/components/ui/back-to-top";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
@@ -56,13 +57,14 @@ export default function RootLayout({
         <a className="skip-link" href="#main-content">
           Skip to main content
         </a>
-        <div className="flex min-h-screen flex-col">
+        <div className="flex min-h-screen flex-col pb-16 lg:pb-0">
           <SiteHeader />
           <main id="main-content" className="flex-1">
             {children}
           </main>
           <SiteFooter />
           <BackToTop />
+          <MobileContactBar />
         </div>
       </body>
     </html>

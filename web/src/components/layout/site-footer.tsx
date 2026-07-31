@@ -128,12 +128,10 @@ export function SiteFooter() {
               </span>
             </a>
 
-            <a
+            <Link
               className="group flex h-full items-start gap-4 border border-white/12 bg-white/[0.03] p-5 transition hover:border-[#46a7e8] hover:bg-white/[0.06]"
-              href={siteConfig.addressHref}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={`Get directions to ${siteConfig.name}`}
+              href="/contact"
+              aria-label={`View contact details and directions for ${siteConfig.name}`}
             >
               <span className="grid h-10 w-10 shrink-0 place-items-center bg-white/10 text-[#73c6fb]">
                 <MapPinIcon className="h-5 w-5" />
@@ -150,10 +148,10 @@ export function SiteFooter() {
                   {siteConfig.address.postcode}
                 </span>
                 <span className="mt-2 block text-[0.62rem] font-extrabold uppercase tracking-[0.14em] text-[#73c6fb]">
-                  Get directions
+                  Contact and directions
                 </span>
               </span>
-            </a>
+            </Link>
           </address>
         </div>
       </div>

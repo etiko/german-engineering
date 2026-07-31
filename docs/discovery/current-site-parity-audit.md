@@ -49,7 +49,7 @@ indexed URL needs an explicit migration decision.
 | Warranty | 30-day warranty claim and Warranty First extended-cover options | Only a generic vehicle disclaimer | Add approved warranty and eligibility content near vehicle decisions |
 | Delivery and aftercare | Dedicated ownership-support pages | Not represented | Add approved support content, either as pages or a consolidated ownership hub |
 | Reviews | Testimonials page plus AutoTrader and Google review links | Not represented | Add verified review content and external-source links |
-| Contact and location | Contact form, map, directions and opening hours | Phone, email, linked directions, postal address and confirmed footer hours | Add a contact/find-us page with a map and enquiry delivery |
+| Contact and location | Contact form, map, directions and opening hours | Dedicated contact/find-us page, confirmed details, linked maps, enquiry form and mobile actions | Replace email handoff with monitored server-side enquiry delivery |
 | Stock updates | External email subscription | Not represented | Decide whether to retain, replace or retire it |
 | Vacancies | Vacancies page and enquiry form | Not represented | Confirm recruitment need and create a page or an intentional redirect |
 | Privacy and cookies | Privacy page and legacy consent notice | No legal routes or consent manager | Add approved privacy, cookies and consent controls before analytics or third-party embeds |
@@ -140,9 +140,9 @@ The audit found information that must not be migrated without client approval:
 
 | Item | Conflict |
 |---|---|
-| Telephone | Most pages use `01440 269543`; the find-us content also shows `01440 387968` |
+| Telephone | Resolved: use `01440 269543`; the alternative legacy number is not carried forward |
 | Business name | Both "German Engineering Car Specialists Ltd" and "German Engineering Car Sales Ltd" are used |
-| Address | Some content includes `Sturmer`; the current replacement does not |
+| Address | Resolved: use Unit 9, Boundary Road, Haverhill, Suffolk, CB9 7YH without `Sturmer` |
 | Opening hours | Visible hours show Saturday `08:00-18:00` and Sunday `10:00-16:00`; current structured data reverses those weekend hours |
 | Stock URLs | The sitemap exposes 43 vehicles while live listing pages expose 17 |
 | FCA copy | The legacy footer contains a second incomplete `FCA No:` field |
