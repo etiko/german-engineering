@@ -437,7 +437,7 @@ src/
 - [ ] [P0] Define reserved vehicle presentation.
 - [ ] [P0] Define sold vehicle retention and related-vehicle behaviour.
 - [ ] [P0] Return the correct status for permanently unavailable pages.
-- [ ] [P0] Exclude unavailable stock from active sitemaps.
+- [x] [P0] Exclude unavailable stock from active sitemaps.
 
 ### Inventory tests
 
@@ -690,7 +690,7 @@ src/
 - [ ] [P0] Add vehicle and offer structured data.
 - [ ] [P0] Add review structured data only where eligible.
 - [ ] [P0] Generate separate content and active-stock sitemaps.
-- [ ] [P0] Generate production robots rules.
+- [x] [P0] Generate production robots rules.
 - [ ] [P0] Add Open Graph and social-card metadata.
 - [ ] [P0] Validate structured data and sitemap output.
 - [ ] [P0] Prepare Search Console launch and monitoring plan.

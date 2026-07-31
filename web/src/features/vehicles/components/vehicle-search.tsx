@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRightIcon } from "@/components/ui/icons";
+import { findVehicleFacet } from "@/features/vehicles/normalizers";
 
 type VehicleSearchProps = {
   idPrefix: string;
@@ -23,6 +24,9 @@ export function VehicleSearch({
   defaults,
   showReset = false,
 }: VehicleSearchProps) {
+  const defaultMake = findVehicleFacet(defaults?.make, makes);
+  const defaultBodyType = findVehicleFacet(defaults?.bodyType, bodyTypes);
+
   return (
     <form
       action="/vehicles"
@@ -38,7 +42,7 @@ export function VehicleSearch({
         <select
           id={`${idPrefix}-make`}
           name="make"
-          defaultValue={defaults?.make ?? ""}
+          defaultValue={defaultMake}
           className={fieldClassName}
         >
           <option value="">All makes</option>
@@ -60,7 +64,7 @@ export function VehicleSearch({
         <select
           id={`${idPrefix}-body`}
           name="body"
-          defaultValue={defaults?.bodyType ?? ""}
+          defaultValue={defaultBodyType}
           className={fieldClassName}
         >
           <option value="">All body styles</option>

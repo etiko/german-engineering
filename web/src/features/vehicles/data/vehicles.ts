@@ -4,6 +4,7 @@ import type {
   VehicleFacets,
   VehicleFilters,
 } from "@/features/vehicles/types";
+import { normalizeVehicleFacet } from "@/features/vehicles/normalizers";
 
 type ListedVehicle = Omit<Vehicle, "description" | "status">;
 
@@ -314,14 +315,16 @@ export async function getVehicles(
   return vehicles.filter((vehicle) => {
     if (
       filters.make &&
-      vehicle.make.toLowerCase() !== filters.make.toLowerCase()
+      normalizeVehicleFacet(vehicle.make) !==
+        normalizeVehicleFacet(filters.make)
     ) {
       return false;
     }
 
     if (
       filters.bodyType &&
-      vehicle.bodyType.toLowerCase() !== filters.bodyType.toLowerCase()
+      normalizeVehicleFacet(vehicle.bodyType) !==
+        normalizeVehicleFacet(filters.bodyType)
     ) {
       return false;
     }
@@ -344,6 +347,12 @@ export async function getVehicleBySlug(
   slug: string,
 ): Promise<Vehicle | undefined> {
   return vehicles.find((vehicle) => vehicle.slug === slug);
+}
+
+export async function getVehicleById(
+  id: string,
+): Promise<Vehicle | undefined> {
+  return vehicles.find((vehicle) => vehicle.id === id);
 }
 
 export async function getVehicleFacets(): Promise<VehicleFacets> {
