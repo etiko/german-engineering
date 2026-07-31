@@ -6,6 +6,10 @@ const securityHeaders = [
     value: "nosniff",
   },
   {
+    key: "Strict-Transport-Security",
+    value: "max-age=31536000",
+  },
+  {
     key: "X-Frame-Options",
     value: "DENY",
   },

@@ -255,13 +255,13 @@ A build item is done when:
 
 ### Repository and application
 
-- [ ] [P0] Create the Git repository.
+- [x] [P0] Create the Git repository.
 - [ ] [P0] Configure branch protection and pull-request review rules.
-- [ ] [P0] Scaffold Next.js with the App Router and TypeScript.
-- [ ] [P0] Enable TypeScript strict mode.
-- [ ] [P0] Configure the agreed package manager and lockfile policy.
+- [x] [P0] Scaffold Next.js with the App Router and TypeScript.
+- [x] [P0] Enable TypeScript strict mode.
+- [x] [P0] Configure the agreed package manager and lockfile policy.
 - [ ] [P0] Configure linting, formatting, unit tests, and end-to-end tests.
-- [ ] [P0] Add an environment-variable schema and startup validation.
+- [x] [P0] Add an environment-variable schema and startup validation.
 - [ ] [P0] Establish the agreed project structure:
 
 ```text
@@ -287,8 +287,8 @@ src/
   types/
 ```
 
-- [ ] [P0] Add import aliases and module-boundary conventions.
-- [ ] [P0] Separate server-only provider code from browser bundles.
+- [x] [P0] Add import aliases and module-boundary conventions.
+- [x] [P0] Separate server-only provider code from browser bundles.
 
 ### Environments and delivery
 
@@ -306,11 +306,11 @@ src/
 - [ ] [P0] Configure uptime monitoring for public pages and critical endpoints.
 - [ ] [P0] Configure structured logging with personal-data redaction.
 - [ ] [P0] Configure health and integration-status checks.
-- [ ] [P0] Add HSTS and baseline security headers.
+- [x] [P0] Add HSTS and baseline security headers.
 - [ ] [P0] Add initial Content Security Policy in report-only mode.
 - [ ] [P0] Add rate-limiting infrastructure.
 - [ ] [P0] Configure Cloudflare Turnstile.
-- [ ] [P0] Configure dependency and vulnerability monitoring.
+- [x] [P0] Configure dependency and vulnerability monitoring.
 
 ### Shared quality tooling
 
@@ -325,7 +325,7 @@ src/
 ### Phase 3 exit criteria
 
 - [ ] A basic application deploys through CI to preview and staging.
-- [ ] Environment validation prevents missing production configuration.
+- [x] Environment validation prevents missing production configuration.
 - [ ] Monitoring captures a test browser and server error.
 - [ ] Security headers and access controls are active in staging.
 
@@ -537,7 +537,7 @@ src/
 - [ ] [P0] Build active-filter chips and clear actions.
 - [ ] [P0] Build result count and sorting.
 - [ ] [P0] Build responsive stock cards.
-- [ ] [P0] Build pagination.
+- [x] [P0] Build pagination.
 - [ ] [P0] Build loading and no-results states.
 - [ ] [P0] Build filter validation and invalid-URL recovery.
 - [ ] [P0] Add listing metadata, canonicals, and breadcrumbs.
@@ -562,7 +562,7 @@ src/
 
 ### Finance
 
-- [ ] [P0] Build plain-English finance overview.
+- [x] [P0] Build plain-English finance overview.
 - [ ] [P0] Build approved credit-broker and regulatory disclosure.
 - [ ] [P0] Integrate the approved finance calculator or provider embed.
 - [ ] [P0] Build secure application handoff.
@@ -571,8 +571,8 @@ src/
 
 ### Sell your car
 
-- [ ] [P0] Build vehicle registration and mileage step.
-- [ ] [P0] Build condition, history, finance, and contact steps.
+- [x] [P0] Build vehicle registration and mileage step.
+- [x] [P0] Build condition, history, finance, and contact steps.
 - [ ] [P0] Build optional image upload.
 - [ ] [P0] Build consent, confirmation, and response-time messaging.
 - [ ] [P0] Preserve campaign and referrer information.
@@ -588,7 +588,7 @@ src/
 
 ### Services and bodyshop
 
-- [ ] [P0] Build services hub.
+- [x] [P0] Build services hub.
 - [ ] [P0] Build servicing page.
 - [ ] [P0] Build MOT page.
 - [ ] [P0] Build diagnostics page.

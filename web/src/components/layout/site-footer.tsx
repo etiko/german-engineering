@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
+  ClockIcon,
   MailIcon,
   MapPinIcon,
   PhoneIcon,
@@ -10,57 +11,83 @@ import { siteConfig } from "@/lib/site";
 export function SiteFooter() {
   return (
     <footer className="bg-[#081421] text-white">
-      <div className="shell grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr_1fr]">
-        <div>
-          <Image
-            src={siteConfig.logoUrl}
-            alt={siteConfig.name}
-            width={204}
-            height={106}
-            sizes="180px"
-            className="h-20 w-auto rounded-sm bg-white px-3 py-2 object-contain"
-          />
-          <p className="mt-6 max-w-md leading-7 text-white/65">
-            Used cars and vans, servicing, diagnostics and vehicle care from an
-            independent team in Haverhill, Suffolk.
-          </p>
+      <div className="shell py-14 md:py-16">
+        <div className="grid gap-10 border-b border-white/12 pb-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+          <div>
+            <Link
+              href="/"
+              aria-label={`${siteConfig.name} home`}
+              className="inline-flex border-l-4 border-[#1266a8] pl-5 opacity-90 transition hover:opacity-100"
+            >
+              <Image
+                src={siteConfig.logoUrl}
+                alt={siteConfig.name}
+                width={204}
+                height={106}
+                sizes="204px"
+                className="h-20 w-auto object-contain brightness-0 invert"
+              />
+            </Link>
+            <p className="mt-6 max-w-md leading-7 text-white/65">
+              Used cars and vans, servicing, diagnostics and vehicle care from
+              an independent team in Haverhill, Suffolk.
+            </p>
+            <p className="mt-4 text-sm font-semibold text-white">
+              Vehicle sales and workshop support, seven days a week.
+            </p>
+          </div>
+
+          <section aria-labelledby="footer-hours-heading">
+            <div className="flex items-center gap-3">
+              <span className="grid h-10 w-10 shrink-0 place-items-center bg-[#1266a8] text-white">
+                <ClockIcon className="h-5 w-5" />
+              </span>
+              <div>
+                <h2
+                  id="footer-hours-heading"
+                  className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#73c6fb]"
+                >
+                  Opening hours
+                </h2>
+                <p className="mt-1 text-sm text-white/55">
+                  Showroom and workshop
+                </p>
+              </div>
+            </div>
+
+            <dl className="mt-5 grid gap-3 sm:grid-cols-2">
+              {siteConfig.openingHours.map((period) => (
+                <div
+                  key={period.label}
+                  className="border border-white/12 bg-white/[0.03] p-5"
+                >
+                  <dt className="text-xs font-extrabold uppercase tracking-[0.14em] text-[#9eb8ca]">
+                    {period.label}
+                  </dt>
+                  <dd className="font-display mt-2 text-3xl font-bold text-white">
+                    <time dateTime={period.opens}>{period.opens}</time>
+                    <span className="mx-1 text-[#73c6fb]" aria-hidden="true">
+                      -
+                    </span>
+                    <time dateTime={period.closes}>{period.closes}</time>
+                  </dd>
+                </div>
+              ))}
+            </dl>
+            <p className="mt-4 text-xs leading-6 text-white/45">
+              Alternative appointment times are available by prior
+              arrangement.
+            </p>
+          </section>
         </div>
 
-        <div>
-          <h2 className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#73c6fb]">
-            Explore
-          </h2>
-          <ul className="mt-5 space-y-3 text-sm font-semibold text-white/75">
-            <li>
-              <Link className="hover:text-white" href="/vehicles">
-                Current vehicles
-              </Link>
-            </li>
-            <li>
-              <Link className="hover:text-white" href="/#sell">
-                Sell your car
-              </Link>
-            </li>
-            <li>
-              <Link className="hover:text-white" href="/#finance">
-                Vehicle finance
-              </Link>
-            </li>
-            <li>
-              <Link className="hover:text-white" href="/#services">
-                Workshop services
-              </Link>
-            </li>
-          </ul>
-        </div>
-
-        <div>
+        <div className="mt-9">
           <h2 className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#73c6fb]">
             Contact
           </h2>
-          <address className="mt-5 grid gap-3 not-italic">
+          <address className="mt-5 grid gap-3 not-italic lg:grid-cols-3">
             <a
-              className="group flex items-start gap-4 border border-white/12 bg-white/[0.03] p-4 transition hover:border-[#46a7e8] hover:bg-white/[0.06]"
+              className="group flex h-full items-start gap-4 border border-white/12 bg-white/[0.03] p-5 transition hover:border-[#46a7e8] hover:bg-white/[0.06]"
               href={siteConfig.phoneHref}
               aria-label={`Call sales and enquiries on ${siteConfig.phoneDisplay}`}
             >
@@ -81,7 +108,7 @@ export function SiteFooter() {
             </a>
 
             <a
-              className="group flex items-start gap-4 border border-white/12 bg-white/[0.03] p-4 transition hover:border-[#46a7e8] hover:bg-white/[0.06]"
+              className="group flex h-full items-start gap-4 border border-white/12 bg-white/[0.03] p-5 transition hover:border-[#46a7e8] hover:bg-white/[0.06]"
               href={`mailto:${siteConfig.email}`}
               aria-label={`Email ${siteConfig.name}`}
             >
@@ -101,7 +128,13 @@ export function SiteFooter() {
               </span>
             </a>
 
-            <div className="flex items-start gap-4 border border-white/12 bg-white/[0.03] p-4">
+            <a
+              className="group flex h-full items-start gap-4 border border-white/12 bg-white/[0.03] p-5 transition hover:border-[#46a7e8] hover:bg-white/[0.06]"
+              href={siteConfig.addressHref}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`Get directions to ${siteConfig.name}`}
+            >
               <span className="grid h-10 w-10 shrink-0 place-items-center bg-white/10 text-[#73c6fb]">
                 <MapPinIcon className="h-5 w-5" />
               </span>
@@ -116,8 +149,11 @@ export function SiteFooter() {
                   <br />
                   {siteConfig.address.postcode}
                 </span>
+                <span className="mt-2 block text-[0.62rem] font-extrabold uppercase tracking-[0.14em] text-[#73c6fb]">
+                  Get directions
+                </span>
               </span>
-            </div>
+            </a>
           </address>
         </div>
       </div>

@@ -56,6 +56,12 @@ export default async function HomePage() {
       postalCode: siteConfig.address.postcode,
       addressCountry: "GB",
     },
+    openingHoursSpecification: siteConfig.openingHours.map((period) => ({
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: period.days,
+      opens: period.opens,
+      closes: period.closes,
+    })),
   };
 
   return (
@@ -143,29 +149,33 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="bg-[#f7f9fb] py-20 md:py-28">
+      <section className="section-grid-dark overflow-hidden bg-[#081421] py-20 text-white md:py-28">
         <div className="shell">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-            <div>
-              <p className="text-sm font-extrabold uppercase tracking-[0.2em] text-[#1266a8]">
+            <div className="max-w-3xl">
+              <p className="text-sm font-extrabold uppercase tracking-[0.2em] text-[#73c6fb]">
                 Available now
               </p>
-              <h2 className="font-display mt-3 text-5xl font-bold uppercase tracking-[-0.02em] text-[#081421] md:text-6xl">
+              <h2 className="font-display mt-3 text-5xl font-bold uppercase tracking-[-0.02em] text-white md:text-6xl">
                 Featured vehicles
               </h2>
+              <p className="mt-5 max-w-2xl leading-7 text-white/65">
+                A selection of current cars and vans, chosen to give you a
+                quick view of the latest stock from our Haverhill showroom.
+              </p>
             </div>
             <Link
               href="/vehicles"
-              className="inline-flex items-center gap-3 text-sm font-extrabold uppercase tracking-[0.14em] text-[#1266a8] hover:text-[#081421]"
+              className="cta cta-outline-light inline-flex self-start md:self-auto"
             >
-              View all stock
-              <span aria-hidden="true">-&gt;</span>
+              <span>View all stock</span>
+              <ArrowRightIcon className="cta-arrow" />
             </Link>
           </div>
 
           <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {featuredVehicles.map((vehicle) => (
-              <VehicleCard key={vehicle.id} vehicle={vehicle} />
+              <VehicleCard key={vehicle.id} vehicle={vehicle} tone="dark" />
             ))}
           </div>
         </div>
@@ -185,13 +195,19 @@ export default async function HomePage() {
               workshop supports all makes with practical advice and experienced
               care.
             </p>
-            <a
-              href={siteConfig.phoneHref}
-              className="cta cta-dark mt-8 inline-flex"
-            >
-              <PhoneIcon className="h-4 w-4" />
-              <span>Call to book a service</span>
-            </a>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link href="/services" className="cta cta-primary inline-flex">
+                <span>Explore services</span>
+                <ArrowRightIcon className="cta-arrow" />
+              </Link>
+              <a
+                href={siteConfig.phoneHref}
+                className="cta cta-outline-dark inline-flex"
+              >
+                <PhoneIcon className="h-4 w-4" />
+                <span>Call to book</span>
+              </a>
+            </div>
           </div>
 
           <div className="divide-y divide-[#dce5ec] border-y border-[#dce5ec]">
@@ -231,10 +247,10 @@ export default async function HomePage() {
               application route through our approved provider.
             </p>
             <Link
-              href="/vehicles"
+              href="/finance"
               className="mt-8 inline-flex items-center gap-3 text-sm font-extrabold uppercase tracking-[0.14em] text-[#73c6fb] hover:text-white"
             >
-              Find a vehicle
+              Make a finance enquiry
               <span aria-hidden="true">-&gt;</span>
             </Link>
           </article>
@@ -253,13 +269,13 @@ export default async function HomePage() {
               Tell us about your current vehicle and our team will respond with
               the next steps, without the hassle of selling privately.
             </p>
-            <a
-              href={`mailto:${siteConfig.email}?subject=Vehicle valuation enquiry`}
+            <Link
+              href="/sell-your-car"
               className="mt-8 inline-flex items-center gap-3 text-sm font-extrabold uppercase tracking-[0.14em] text-white hover:text-[#d9f2ff]"
             >
               Request a valuation
               <span aria-hidden="true">-&gt;</span>
-            </a>
+            </Link>
           </article>
         </div>
       </section>

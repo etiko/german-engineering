@@ -19,12 +19,17 @@
 ## Confirmed public behaviour
 
 - Live cars and vans are published as individual vehicle pages.
+- Current listing pages exposed 15 cars and 2 vans on 30 July 2026, while the
+  sitemap exposed 43 vehicle URLs; stock and sitemap reconciliation is required.
 - Vehicle pages expose schema.org `Vehicle` and `Offer` data.
 - Stock records have stable numeric IDs.
 - The current sitemap contained 52 URLs at the audit snapshot.
 - Stock images are delivered from `img-uk3.cd5.uk`.
 - The current site links to AutoTrader and loads AutoConvert and Visitor Chat.
 - Current contact and regulatory copy contains inconsistencies that must be resolved before migration.
+
+The route and feature comparison is documented in
+`docs/discovery/current-site-parity-audit.md`.
 
 ## Access required from the client
 

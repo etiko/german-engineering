@@ -73,6 +73,13 @@ a {
   background-size: 32px 32px;
 }
 
+.section-grid-dark {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
 .skip-link {
   position: fixed;
   top: 0.75rem;

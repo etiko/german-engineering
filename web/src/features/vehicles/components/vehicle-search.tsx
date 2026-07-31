@@ -90,6 +90,7 @@ export function VehicleSearch({
           <option value="10000">Up to GBP 10,000</option>
           <option value="12500">Up to GBP 12,500</option>
           <option value="15000">Up to GBP 15,000</option>
+          <option value="20000">Up to GBP 20,000</option>
         </select>
       </div>
 

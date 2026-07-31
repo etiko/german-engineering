@@ -8,12 +8,11 @@ import {
 import { siteConfig } from "@/lib/site";
 
 const navigation = [
+  { label: "Home", href: "/" },
   { label: "Vehicles", href: "/vehicles" },
-  { label: "Sell your car", href: "/#sell" },
-  { label: "Finance", href: "/#finance" },
-  { label: "Services", href: "/#services" },
-  { label: "About", href: "/#about" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Sell your car", href: "/sell-your-car" },
+  { label: "Finance", href: "/finance" },
+  { label: "Services", href: "/services" },
 ];
 
 export function SiteHeader() {

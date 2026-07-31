@@ -218,7 +218,7 @@ export default async function VehiclePage({ params }: VehiclePageProps) {
                   Email an enquiry
                 </a>
                 <Link
-                  href="/#sell"
+                  href="/sell-your-car"
                   className="cta cta-outline-dark inline-flex"
                 >
                   Request part exchange

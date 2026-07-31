@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Barlow_Condensed, Manrope } from "next/font/google";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { BackToTop } from "@/components/ui/back-to-top";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
@@ -49,6 +50,9 @@ export default function RootLayout({
       className={`${manrope.variable} ${barlowCondensed.variable} h-full antialiased`}
     >
       <body className="min-h-full">
+        <span id="page-top" tabIndex={-1} className="sr-only">
+          Top of page
+        </span>
         <a className="skip-link" href="#main-content">
           Skip to main content
         </a>
@@ -58,6 +62,7 @@ export default function RootLayout({
             {children}
           </main>
           <SiteFooter />
+          <BackToTop />
         </div>
       </body>
     </html>
