@@ -31,6 +31,39 @@ test.describe("key routes", () => {
   }
 });
 
+test("primary navigation identifies the current section", async ({ page }) => {
+  const routes = [
+    ["/", "Home"],
+    ["/vehicles", "Vehicles"],
+    ["/vehicles/2016-volvo-xc90-t8-inscription", "Vehicles"],
+    ["/sell-your-car", "Sell your car"],
+    ["/finance", "Finance"],
+    ["/services", "Services"],
+  ] as const;
+
+  for (const [path, label] of routes) {
+    await page.goto(path);
+
+    await expect(
+      page
+        .getByRole("navigation", { name: "Primary navigation" })
+        .getByRole("link", { name: label }),
+    ).toHaveAttribute("aria-current", "page");
+  }
+});
+
+test("mobile navigation identifies the current section", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/services");
+  await page.getByText("Menu", { exact: true }).click();
+
+  await expect(
+    page
+      .getByRole("navigation", { name: "Mobile navigation" })
+      .getByRole("link", { name: "Services" }),
+  ).toHaveAttribute("aria-current", "page");
+});
+
 test("inventory pagination shows ten then seven vehicles", async ({ page }) => {
   await page.goto("/vehicles");
 

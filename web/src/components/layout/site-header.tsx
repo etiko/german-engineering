@@ -5,6 +5,7 @@ import {
   MailIcon,
   PhoneIcon,
 } from "@/components/ui/icons";
+import { ActiveNavigationLink } from "@/components/layout/active-navigation-link";
 import { siteConfig } from "@/lib/site";
 
 const navigation = [
@@ -75,12 +76,12 @@ export function SiteHeader() {
             <ul className="flex items-center gap-7">
               {navigation.map((item) => (
                 <li key={item.label}>
-                  <Link
+                  <ActiveNavigationLink
                     href={item.href}
-                    className="text-xs font-extrabold uppercase tracking-[0.12em] text-[#142a40] transition hover:text-[#1266a8]"
+                    variant="desktop"
                   >
                     {item.label}
-                  </Link>
+                  </ActiveNavigationLink>
                 </li>
               ))}
             </ul>
@@ -105,12 +106,12 @@ export function SiteHeader() {
               <ul>
                 {navigation.map((item) => (
                   <li key={item.label}>
-                    <Link
+                    <ActiveNavigationLink
                       href={item.href}
-                      className="block border-b border-[#eef3f6] px-3 py-3 text-sm font-bold text-[#142a40] last:border-0 hover:bg-[#eef3f6]"
+                      variant="mobile"
                     >
                       {item.label}
-                    </Link>
+                    </ActiveNavigationLink>
                   </li>
                 ))}
               </ul>
