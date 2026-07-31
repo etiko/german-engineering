@@ -84,7 +84,7 @@ export function VehicleCard({
           }`}
         >
           <div>
-            <dt className={isDark ? "text-[#9eb8ca]" : "text-[#6e8396]"}>
+            <dt className={isDark ? "text-[#9eb8ca]" : "text-[#526a7f]"}>
               Mileage
             </dt>
             <dd
@@ -96,7 +96,7 @@ export function VehicleCard({
             </dd>
           </div>
           <div>
-            <dt className={isDark ? "text-[#9eb8ca]" : "text-[#6e8396]"}>
+            <dt className={isDark ? "text-[#9eb8ca]" : "text-[#526a7f]"}>
               Gearbox
             </dt>
             <dd
@@ -108,7 +108,7 @@ export function VehicleCard({
             </dd>
           </div>
           <div>
-            <dt className={isDark ? "text-[#9eb8ca]" : "text-[#6e8396]"}>
+            <dt className={isDark ? "text-[#9eb8ca]" : "text-[#526a7f]"}>
               Fuel
             </dt>
             <dd
@@ -120,7 +120,7 @@ export function VehicleCard({
             </dd>
           </div>
           <div>
-            <dt className={isDark ? "text-[#9eb8ca]" : "text-[#6e8396]"}>
+            <dt className={isDark ? "text-[#9eb8ca]" : "text-[#526a7f]"}>
               Colour
             </dt>
             <dd

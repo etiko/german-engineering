@@ -356,14 +356,20 @@ export async function getVehicleById(
 }
 
 export async function getVehicleFacets(): Promise<VehicleFacets> {
+  const activeVehicles = vehicles.filter(
+    (vehicle) => vehicle.status !== "sold",
+  );
+
   return {
-    makes: [...new Set(vehicles.map((vehicle) => vehicle.make))].sort(),
+    makes: [...new Set(activeVehicles.map((vehicle) => vehicle.make))].sort(),
     bodyTypes: [
-      ...new Set(vehicles.map((vehicle) => vehicle.bodyType)),
+      ...new Set(activeVehicles.map((vehicle) => vehicle.bodyType)),
     ].sort(),
   };
 }
 
 export async function getVehicleSlugs(): Promise<string[]> {
-  return vehicles.map((vehicle) => vehicle.slug);
+  return vehicles
+    .filter((vehicle) => vehicle.status !== "sold")
+    .map((vehicle) => vehicle.slug);
 }

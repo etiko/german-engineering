@@ -1,5 +1,6 @@
 import { notFound, permanentRedirect } from "next/navigation";
 import { getVehicleById } from "@/features/vehicles/data/vehicles";
+import { vehicleDestination } from "@/features/vehicles/routing";
 
 type LegacyVehiclePageProps = {
   params: Promise<{
@@ -23,5 +24,5 @@ export default async function LegacyVehiclePage({
     notFound();
   }
 
-  permanentRedirect(`/vehicles/${vehicle.slug}`);
+  permanentRedirect(vehicleDestination(vehicle));
 }

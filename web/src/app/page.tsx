@@ -6,6 +6,7 @@ import {
 } from "@/components/ui/icons";
 import { VehicleCard } from "@/features/vehicles/components/vehicle-card";
 import { VehicleSearch } from "@/features/vehicles/components/vehicle-search";
+import { reviewHighlights } from "@/features/reviews/data/reviews";
 import {
   getFeaturedVehicles,
   getVehicleFacets,
@@ -216,7 +217,7 @@ export default async function HomePage() {
                 key={service.number}
                 className="grid gap-5 py-8 sm:grid-cols-[5rem_1fr] md:py-10"
               >
-                <span className="font-display text-4xl font-bold text-[#46a7e8]">
+                <span className="font-display text-4xl font-bold text-[#1266a8]">
                   {service.number}
                 </span>
                 <div>
@@ -259,13 +260,13 @@ export default async function HomePage() {
             id="sell"
             className="border-t border-white/15 bg-[#1266a8] p-8 md:p-12 lg:border-l lg:border-t-0"
           >
-            <p className="text-sm font-extrabold uppercase tracking-[0.2em] text-white/70">
+            <p className="text-sm font-extrabold uppercase tracking-[0.2em] text-white">
               Sell or part exchange
             </p>
             <h2 className="font-display mt-3 text-5xl font-bold uppercase leading-[0.94]">
               A simpler way to change your car.
             </h2>
-            <p className="mt-6 max-w-xl leading-8 text-white/78">
+            <p className="mt-6 max-w-xl leading-8 text-white">
               Tell us about your current vehicle and our team will respond with
               the next steps, without the hassle of selling privately.
             </p>
@@ -305,6 +306,44 @@ export default async function HomePage() {
         </div>
       </section>
 
+      <section className="bg-white py-20 md:py-28">
+        <div className="shell">
+          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <div className="max-w-3xl">
+              <p className="text-sm font-extrabold uppercase tracking-[0.2em] text-[#1266a8]">
+                Customer feedback
+              </p>
+              <h2 className="font-display text-balance mt-3 text-5xl font-bold uppercase leading-[0.94] text-[#081421] md:text-6xl">
+                Known for practical help and clear advice.
+              </h2>
+            </div>
+            <Link
+              href="/reviews"
+              className="inline-flex items-center gap-3 text-sm font-extrabold uppercase tracking-[0.14em] text-[#1266a8] hover:text-[#081421]"
+            >
+              Reviews and sources
+              <ArrowRightIcon className="h-4 w-4" />
+            </Link>
+          </div>
+
+          <div className="mt-10 grid gap-px border border-[#dce5ec] bg-[#dce5ec] lg:grid-cols-3">
+            {reviewHighlights.map((review) => (
+              <article key={review.title} className="bg-[#f7f9fb] p-7 md:p-9">
+                <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#526a7f]">
+                  {review.context}
+                </p>
+                <h3 className="font-display mt-4 text-3xl font-bold uppercase leading-none text-[#081421]">
+                  {review.title}
+                </h3>
+                <p className="mt-4 leading-7 text-[#526a7f]">
+                  {review.summary}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="contact" className="bg-white py-20 md:py-28">
         <div className="shell grid gap-8 lg:grid-cols-[1fr_0.9fr]">
           <div>
@@ -330,7 +369,7 @@ export default async function HomePage() {
           <div className="border border-[#dce5ec] bg-[#f7f9fb] p-7 md:p-9">
             <dl className="space-y-6">
               <div>
-                <dt className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#6e8396]">
+                <dt className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#526a7f]">
                   Telephone
                 </dt>
                 <dd className="mt-2">
@@ -343,7 +382,7 @@ export default async function HomePage() {
                 </dd>
               </div>
               <div>
-                <dt className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#6e8396]">
+                <dt className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#526a7f]">
                   Email
                 </dt>
                 <dd className="mt-2">
@@ -356,7 +395,7 @@ export default async function HomePage() {
                 </dd>
               </div>
               <div>
-                <dt className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#6e8396]">
+                <dt className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#526a7f]">
                   Showroom
                 </dt>
                 <dd className="mt-2 leading-7 text-[#38516a]">

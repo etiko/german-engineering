@@ -6,6 +6,7 @@ import {
   MapPinIcon,
   PhoneIcon,
 } from "@/components/ui/icons";
+import { CookiePreferencesButton } from "@/features/consent/components/cookie-preferences-button";
 import { siteConfig } from "@/lib/site";
 
 export function SiteFooter() {
@@ -157,13 +158,42 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-white/12">
-        <div className="shell flex flex-col gap-4 py-6 text-xs leading-6 text-white/50 md:flex-row md:items-center md:justify-between">
-          <p>
-            Company No. 10771039. FCA No. 780109. Credit broker, not a lender.
-          </p>
-          <p>
-            Copyright {new Date().getFullYear()} {siteConfig.shortName}
-          </p>
+        <div className="shell py-6 text-xs leading-6 text-white/50">
+          <nav
+            aria-label="Legal information"
+            className="flex flex-wrap gap-x-5 gap-y-2 text-white/65"
+          >
+            <Link className="hover:text-white" href="/privacy">
+              Privacy
+            </Link>
+            <Link className="hover:text-white" href="/cookies">
+              Cookies
+            </Link>
+            <CookiePreferencesButton className="hover:text-white">
+              Manage cookies
+            </CookiePreferencesButton>
+            <Link className="hover:text-white" href="/terms">
+              Terms
+            </Link>
+            <Link className="hover:text-white" href="/complaints">
+              Complaints
+            </Link>
+            <Link className="hover:text-white" href="/accessibility">
+              Accessibility
+            </Link>
+            <Link className="hover:text-white" href="/finance-disclosure">
+              Finance disclosure
+            </Link>
+          </nav>
+          <div className="mt-5 flex flex-col gap-3 border-t border-white/10 pt-5 md:flex-row md:items-center md:justify-between">
+            <p>
+              Company No. {siteConfig.companyNumber}. FCA No.{" "}
+              {siteConfig.fcaNumber}. Credit broker, not a lender.
+            </p>
+            <p>
+              Copyright {new Date().getFullYear()} {siteConfig.shortName}
+            </p>
+          </div>
         </div>
       </div>
     </footer>

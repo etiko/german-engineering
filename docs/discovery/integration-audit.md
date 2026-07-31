@@ -1,6 +1,6 @@
 # Integration audit
 
-**Status:** In progress
+**Status:** Repository preparation complete; provider access pending
 **Started:** 30 July 2026
 
 ## Publicly observed systems
@@ -41,12 +41,20 @@ The route and feature comparison is documented in
 - Workshop or garage-management system details.
 - Chat and call-tracking account details.
 - GA4, Tag Manager, Search Console and Google Business Profile access.
-- Approved company, FCA, privacy and finance wording.
+- Compliance approval for privacy, complaints, warranty and finance wording.
 - Confirmation of logo, vehicle-image and photography usage rights.
 
 ## Architecture decision pending
 
-The current implementation uses a typed server-only fixture behind the vehicle data-access module. The UI does not import provider payloads directly. Once the approved stock source is confirmed, the fixture can be replaced by an adapter without rewriting the pages or cards.
+The current implementation uses a typed server-only fixture behind the vehicle
+data-access module. The UI does not import provider payloads directly. Once the
+approved stock source is confirmed, the fixture can be replaced by an adapter
+without rewriting the pages or cards.
+
+Repository-controlled safeguards are already present: transparent email
+handoffs, consent controls with optional analytics disabled, a report-only CSP,
+legal routes, exact active-stock redirects and automated browser/accessibility
+checks. They do not replace provider credentials or operational ownership.
 
 ## Blocking questions
 

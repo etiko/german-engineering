@@ -296,7 +296,7 @@ src/
 - [ ] [P0] Configure Vercel projects and access controls.
 - [ ] [P0] Configure Cloudflare DNS and WAF plan.
 - [ ] [P0] Configure preview deployments for pull requests.
-- [ ] [P0] Configure CI checks for type-checking, linting, tests, and builds.
+- [x] [P0] Configure CI checks for type-checking, linting, tests, and builds.
 - [ ] [P0] Configure protected production deployment.
 - [ ] [P0] Document secret creation, rotation, and ownership.
 
@@ -307,17 +307,17 @@ src/
 - [ ] [P0] Configure structured logging with personal-data redaction.
 - [ ] [P0] Configure health and integration-status checks.
 - [x] [P0] Add HSTS and baseline security headers.
-- [ ] [P0] Add initial Content Security Policy in report-only mode.
+- [x] [P0] Add initial Content Security Policy in report-only mode.
 - [ ] [P0] Add rate-limiting infrastructure.
 - [ ] [P0] Configure Cloudflare Turnstile.
 - [x] [P0] Configure dependency and vulnerability monitoring.
 
 ### Shared quality tooling
 
-- [ ] [P0] Add Vitest.
-- [ ] [P0] Add React Testing Library.
-- [ ] [P0] Add Playwright.
-- [ ] [P0] Add axe accessibility checks.
+- [x] [P0] Add Vitest.
+- [x] [P0] Add React Testing Library.
+- [x] [P0] Add Playwright.
+- [x] [P0] Add axe accessibility checks.
 - [ ] [P0] Add test fixtures and provider mocks.
 - [ ] [P0] Add bundle analysis.
 - [ ] [P0] Add performance-budget checks where practical.
@@ -425,17 +425,17 @@ src/
 - [ ] [P0] Implement year and mileage filters.
 - [ ] [P0] Implement fuel, transmission, body type, ULEZ, and colour filters.
 - [ ] [P0] Implement sorting by newest, price, mileage, year, and monthly payment.
-- [ ] [P0] Implement pagination and total counts.
+- [x] [P0] Implement pagination and total counts.
 - [ ] [P0] Validate and normalise URL search parameters.
 - [ ] [P0] Return useful empty states rather than provider errors.
 - [ ] [P0] Add caching and targeted invalidation after stock changes.
 
 ### Vehicle route behaviour
 
-- [ ] [P0] Generate stable, readable vehicle URLs.
+- [x] [P0] Generate stable, readable vehicle URLs.
 - [ ] [P0] Resolve old vehicle URLs by stock ID where possible.
 - [ ] [P0] Define reserved vehicle presentation.
-- [ ] [P0] Define sold vehicle retention and related-vehicle behaviour.
+- [x] [P0] Define sold vehicle redirect and current-stock behaviour.
 - [ ] [P0] Return the correct status for permanently unavailable pages.
 - [x] [P0] Exclude unavailable stock from active sitemaps.
 
@@ -489,14 +489,14 @@ src/
 - [ ] [P0] Implement desktop header and navigation.
 - [ ] [P0] Implement accessible mobile menu.
 - [ ] [P0] Implement breadcrumbs.
-- [ ] [P0] Implement footer with legal and business information.
+- [x] [P0] Implement footer with legal and business information.
 - [x] [P0] Implement persistent mobile contact bar.
-- [ ] [P0] Implement cookie preferences entry point.
+- [x] [P0] Implement cookie preferences entry point.
 - [ ] [P0] Implement skip link and keyboard focus management.
 
 ### Interactive components
 
-- [ ] [P0] Implement accessible dialog.
+- [x] [P0] Implement accessible dialog.
 - [ ] [P0] Implement mobile filter drawer.
 - [ ] [P0] Implement accordion.
 - [ ] [P0] Implement tabs only where content requires them.
@@ -524,7 +524,7 @@ src/
 - [ ] [P0] Build featured and recently added stock.
 - [ ] [P0] Build sales and service journey split.
 - [ ] [P0] Build finance and part-exchange section.
-- [ ] [P0] Build reviews section with source links.
+- [x] [P0] Build reviews section with source links.
 - [x] [P0] Build location, opening hours, directions, and contact section.
 - [ ] [P0] Add page metadata and structured data.
 
@@ -597,20 +597,20 @@ src/
 - [ ] [P0] Build bodywork and paint page.
 - [ ] [P0] Build accident-management page.
 - [ ] [P0] Build recovery page.
-- [ ] [P0] Build service/bodyshop enquiry form.
+- [x] [P0] Build service/bodyshop enquiry form.
 - [ ] [P0] Support preferred date, registration, mileage, requested work, and photo upload.
 
 ### Company and content
 
-- [ ] [P0] Build warranty and aftercare page.
-- [ ] [P0] Build delivery page.
-- [ ] [P0] Build reviews page.
+- [x] [P0] Build warranty and aftercare page.
+- [x] [P0] Build delivery content within the ownership-support page.
+- [x] [P0] Build reviews page.
 - [ ] [P0] Build about and team page.
 - [ ] [P0] Build vacancies page.
 - [x] [P0] Build contact and find-us page.
 - [ ] [P0] Build guide listing and article templates.
 - [ ] [P0] Build FAQ presentation.
-- [ ] [P0] Build privacy, cookies, terms, complaints, and finance-disclosure pages.
+- [x] [P0] Build privacy, cookies, terms, complaints, and finance-disclosure pages.
 
 ### Phase 7 exit criteria
 
@@ -682,12 +682,12 @@ src/
 - [ ] [P0] Classify URLs as retain, replace, redirect, or remove.
 - [ ] [P0] Create one-to-one 301 redirect map.
 - [ ] [P0] Preserve valuable stock IDs and route patterns.
-- [ ] [P0] Define sold-vehicle indexation and redirect rules.
-- [ ] [P0] Add page title and description generation.
-- [ ] [P0] Add canonical rules.
+- [x] [P0] Define sold-vehicle indexation and redirect rules.
+- [x] [P0] Add page title and description generation.
+- [x] [P0] Add canonical rules.
 - [ ] [P0] Add breadcrumb structured data.
-- [ ] [P0] Add AutoDealer/local-business structured data.
-- [ ] [P0] Add vehicle and offer structured data.
+- [x] [P0] Add AutoDealer/local-business structured data.
+- [x] [P0] Add vehicle and offer structured data.
 - [ ] [P0] Add review structured data only where eligible.
 - [ ] [P0] Generate separate content and active-stock sitemaps.
 - [x] [P0] Generate production robots rules.
@@ -716,7 +716,7 @@ src/
 - [ ] [P0] Select and configure consent-management platform.
 - [ ] [P0] Categorise every cookie and third-party script.
 - [ ] [P0] Block non-essential services according to the approved model.
-- [ ] [P0] Provide clear preference controls and withdrawal route.
+- [x] [P0] Provide clear preference controls and withdrawal route.
 - [ ] [P0] Publish approved privacy and cookie policies.
 - [ ] [P0] Document data retention and deletion.
 - [ ] [P0] Test consent records and regional behaviour.
@@ -742,7 +742,7 @@ src/
 - [ ] [P0] Test forms and validation.
 - [ ] [P0] Test gallery, menu, filters, dialogs, and accordions.
 - [ ] [P0] Resolve all critical and high-severity findings.
-- [ ] [P0] Prepare accessibility statement.
+- [x] [P0] Prepare accessibility statement.
 
 ### Security
 
@@ -773,10 +773,10 @@ src/
 
 ### Automated checks
 
-- [ ] [P0] Run type-checking, linting, unit tests, and production build.
+- [x] [P0] Run type-checking, linting, unit tests, and production build.
 - [ ] [P0] Run integration tests for stock and lead providers.
-- [ ] [P0] Run Playwright critical-journey suite.
-- [ ] [P0] Run automated accessibility checks.
+- [x] [P0] Run Playwright critical-journey suite.
+- [x] [P0] Run automated accessibility checks.
 - [ ] [P0] Run bundle and performance-budget checks.
 
 ### Functional QA

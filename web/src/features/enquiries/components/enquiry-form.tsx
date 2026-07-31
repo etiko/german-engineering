@@ -1,10 +1,11 @@
 "use client";
 
 import type { FormEvent } from "react";
+import Link from "next/link";
 import { ArrowRightIcon } from "@/components/ui/icons";
 
 type EnquiryFormProps = {
-  kind: "contact" | "finance" | "valuation";
+  kind: "contact" | "finance" | "valuation" | "workshop";
   recipient: string;
 };
 
@@ -30,6 +31,7 @@ export function EnquiryForm({ kind, recipient }: EnquiryFormProps) {
   const isValuation = kind === "valuation";
   const isFinance = kind === "finance";
   const isContact = kind === "contact";
+  const isWorkshop = kind === "workshop";
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -41,25 +43,36 @@ export function EnquiryForm({ kind, recipient }: EnquiryFormProps) {
     const preferredContact = valueFrom(formData, "preferredContact");
     const message = valueFrom(formData, "message");
 
-    const enquiryDetails: Array<[string, string]> = isValuation
-      ? [
-          ["Registration", valueFrom(formData, "registration")],
-          ["Make and model", valueFrom(formData, "makeModel")],
-          ["Mileage", valueFrom(formData, "mileage")],
-          ["Vehicle condition", valueFrom(formData, "condition")],
-          ["Service history", valueFrom(formData, "serviceHistory")],
-          ["Outstanding finance", valueFrom(formData, "outstandingFinance")],
-        ]
-      : isFinance
-        ? [
-            ["Vehicle or stock reference", valueFrom(formData, "vehicle")],
-            ["Available deposit", pounds(valueFrom(formData, "deposit"))],
-            [
-              "Target monthly budget",
-              pounds(valueFrom(formData, "monthlyBudget")),
-            ],
-          ]
-        : [["Enquiry type", valueFrom(formData, "enquiryType")]];
+    let enquiryDetails: Array<[string, string]>;
+
+    if (isValuation) {
+      enquiryDetails = [
+        ["Registration", valueFrom(formData, "registration")],
+        ["Make and model", valueFrom(formData, "makeModel")],
+        ["Mileage", valueFrom(formData, "mileage")],
+        ["Vehicle condition", valueFrom(formData, "condition")],
+        ["Service history", valueFrom(formData, "serviceHistory")],
+        ["Outstanding finance", valueFrom(formData, "outstandingFinance")],
+      ];
+    } else if (isFinance) {
+      enquiryDetails = [
+        ["Vehicle or stock reference", valueFrom(formData, "vehicle")],
+        ["Available deposit", pounds(valueFrom(formData, "deposit"))],
+        [
+          "Target monthly budget",
+          pounds(valueFrom(formData, "monthlyBudget")),
+        ],
+      ];
+    } else if (isWorkshop) {
+      enquiryDetails = [
+        ["Registration", valueFrom(formData, "registration")],
+        ["Mileage", valueFrom(formData, "mileage")],
+        ["Requested work", valueFrom(formData, "requestedWork")],
+        ["Preferred date", valueFrom(formData, "preferredDate")],
+      ];
+    } else {
+      enquiryDetails = [["Enquiry type", valueFrom(formData, "enquiryType")]];
+    }
 
     const body = [
       `Hello German Engineering,`,
@@ -68,7 +81,9 @@ export function EnquiryForm({ kind, recipient }: EnquiryFormProps) {
         ? "I would like to request a valuation for my vehicle."
         : isFinance
           ? "I would like to discuss vehicle finance."
-          : "I would like to make a general enquiry.",
+          : isWorkshop
+            ? "I would like to discuss a workshop booking."
+            : "I would like to make a general enquiry.",
       "",
       `Name: ${name}`,
       `Email: ${email}`,
@@ -86,7 +101,9 @@ export function EnquiryForm({ kind, recipient }: EnquiryFormProps) {
       ? `Vehicle valuation enquiry - ${valueFrom(formData, "registration")}`
       : isFinance
         ? `Vehicle finance enquiry - ${valueFrom(formData, "vehicle")}`
-        : `Website enquiry - ${valueFrom(formData, "enquiryType")}`;
+        : isWorkshop
+          ? `Workshop enquiry - ${valueFrom(formData, "registration")}`
+          : `Website enquiry - ${valueFrom(formData, "enquiryType")}`;
 
     window.location.assign(
       `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,
@@ -269,6 +286,88 @@ export function EnquiryForm({ kind, recipient }: EnquiryFormProps) {
             </div>
           </div>
         </div>
+      ) : isWorkshop ? (
+        <div className="grid gap-5 sm:grid-cols-2">
+          <div>
+            <label
+              className={labelClassName}
+              htmlFor={`${idPrefix}-registration`}
+            >
+              Registration *
+            </label>
+            <input
+              className={fieldClassName}
+              id={`${idPrefix}-registration`}
+              name="registration"
+              autoCapitalize="characters"
+              autoComplete="off"
+              maxLength={12}
+              placeholder="AB12 CDE"
+              required
+            />
+          </div>
+          <div>
+            <label className={labelClassName} htmlFor={`${idPrefix}-mileage`}>
+              Current mileage *
+            </label>
+            <input
+              className={fieldClassName}
+              id={`${idPrefix}-mileage`}
+              name="mileage"
+              type="number"
+              min="0"
+              step="100"
+              inputMode="numeric"
+              placeholder="45000"
+              required
+            />
+          </div>
+          <div>
+            <label
+              className={labelClassName}
+              htmlFor={`${idPrefix}-requested-work`}
+            >
+              Requested work *
+            </label>
+            <select
+              className={fieldClassName}
+              id={`${idPrefix}-requested-work`}
+              name="requestedWork"
+              defaultValue=""
+              required
+            >
+              <option value="" disabled>
+                Select a service
+              </option>
+              <option value="Servicing">Servicing</option>
+              <option value="MOT preparation">MOT preparation</option>
+              <option value="Diagnostics or repair">
+                Diagnostics or repair
+              </option>
+              <option value="Tyres or exhaust">Tyres or exhaust</option>
+              <option value="Air conditioning">Air conditioning</option>
+              <option value="Bodywork or paint">Bodywork or paint</option>
+              <option value="Other workshop work">
+                Other workshop work
+              </option>
+            </select>
+          </div>
+          <div>
+            <label
+              className={labelClassName}
+              htmlFor={`${idPrefix}-preferred-date`}
+            >
+              Preferred date *
+            </label>
+            <input
+              className={fieldClassName}
+              id={`${idPrefix}-preferred-date`}
+              name="preferredDate"
+              type="date"
+              required
+            />
+          </div>
+        </div>
       ) : (
         <div>
           <label
@@ -369,7 +468,9 @@ export function EnquiryForm({ kind, recipient }: EnquiryFormProps) {
               ? "Service history, outstanding finance, damage or anything else we should know."
               : isFinance
                 ? "Tell us about your requirements or the best time to contact you."
-                : "Tell us how the team can help."
+                : isWorkshop
+                  ? "Describe any symptoms, warning lights or other details that may help the workshop."
+                  : "Tell us how the team can help."
           }
         />
       </div>
@@ -383,7 +484,14 @@ export function EnquiryForm({ kind, recipient }: EnquiryFormProps) {
         />
         <span>
           I agree that German Engineering may use these details to respond to
-          my enquiry. *
+          my enquiry as described in the{" "}
+          <Link
+            href="/privacy"
+            className="font-bold text-[#1266a8] underline underline-offset-4"
+          >
+            privacy notice
+          </Link>
+          . *
         </span>
       </label>
 
@@ -394,7 +502,7 @@ export function EnquiryForm({ kind, recipient }: EnquiryFormProps) {
         </button>
         <p
           id={`${idPrefix}-delivery-note`}
-          className="mt-4 max-w-xl text-xs leading-6 text-[#6e8396]"
+          className="mt-4 max-w-xl text-xs leading-6 text-[#526a7f]"
         >
           This opens your email app with the enquiry details ready to review
           and send.

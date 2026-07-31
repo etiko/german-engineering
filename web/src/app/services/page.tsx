@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRightIcon,
-  MailIcon,
   PhoneIcon,
 } from "@/components/ui/icons";
+import { EnquiryForm } from "@/features/enquiries/components/enquiry-form";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -98,6 +98,13 @@ export default function ServicesPage() {
               <PhoneIcon className="h-4 w-4" />
               <span>Call the workshop</span>
             </a>
+            <a
+              href="#workshop-enquiry"
+              className="cta cta-outline-light mt-3 inline-flex sm:ml-3"
+            >
+              <span>Request a booking</span>
+              <ArrowRightIcon className="cta-arrow" />
+            </a>
           </div>
         </div>
       </section>
@@ -116,7 +123,7 @@ export default function ServicesPage() {
           <div className="mt-10 grid gap-px border border-[#dce5ec] bg-[#dce5ec] md:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => (
               <article key={service.number} className="bg-white p-7 md:p-9">
-                <span className="font-display text-4xl font-bold text-[#46a7e8]">
+                <span className="font-display text-4xl font-bold text-[#1266a8]">
                   {service.number}
                 </span>
                 <h3 className="font-display mt-7 text-3xl font-bold uppercase leading-none text-[#081421]">
@@ -160,32 +167,34 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="bg-[#1266a8] py-14 text-white md:py-18">
-        <div className="shell flex flex-col justify-between gap-8 lg:flex-row lg:items-center">
+      <section
+        id="workshop-enquiry"
+        className="section-grid bg-[#eef3f6] py-16 md:py-24"
+      >
+        <div className="shell grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
           <div>
-            <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-white/70">
-              Ready to arrange a visit?
+            <p className="text-sm font-extrabold uppercase tracking-[0.2em] text-[#1266a8]">
+              Workshop enquiry
             </p>
-            <h2 className="font-display mt-2 text-4xl font-bold uppercase md:text-5xl">
-              Speak to the workshop team.
+            <h2 className="font-display text-balance mt-3 text-5xl font-bold uppercase leading-[0.94] text-[#081421]">
+              Request a suitable date.
             </h2>
-          </div>
-          <div className="flex flex-col gap-3 sm:flex-row">
+            <p className="mt-5 max-w-lg leading-8 text-[#526a7f]">
+              Share the vehicle registration, current mileage and work needed.
+              The team will contact you to discuss availability and confirm
+              the booking.
+            </p>
             <a
               href={siteConfig.phoneHref}
-              className="cta cta-dark inline-flex"
+              className="mt-7 inline-flex items-center gap-3 text-sm font-extrabold uppercase tracking-[0.12em] text-[#1266a8] hover:text-[#081421]"
             >
               <PhoneIcon className="h-4 w-4" />
-              <span>{siteConfig.phoneDisplay}</span>
+              <span>Or call {siteConfig.phoneDisplay}</span>
             </a>
-            <a
-              href={`mailto:${siteConfig.email}?subject=${encodeURIComponent("Workshop service enquiry")}`}
-              className="cta cta-outline-light inline-flex"
-            >
-              <MailIcon className="h-4 w-4" />
-              <span>Email the workshop</span>
-              <ArrowRightIcon className="cta-arrow" />
-            </a>
+          </div>
+
+          <div className="border border-[#dce5ec] bg-white p-6 shadow-[0_24px_60px_rgba(8,20,33,0.08)] md:p-9">
+            <EnquiryForm kind="workshop" recipient={siteConfig.email} />
           </div>
         </div>
       </section>

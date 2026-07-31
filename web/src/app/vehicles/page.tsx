@@ -6,6 +6,10 @@ import {
   getVehicleFacets,
   getVehicles,
 } from "@/features/vehicles/data/vehicles";
+import {
+  paginateItems,
+  positivePageNumber,
+} from "@/features/vehicles/pagination";
 
 export const metadata: Metadata = {
   title: "Used Cars and Vans in Haverhill",
@@ -25,19 +29,8 @@ type VehiclesPageProps = {
   }>;
 };
 
-const vehiclesPerPage = 10;
-
 function firstValue(value: string | string[] | undefined): string | undefined {
   return Array.isArray(value) ? value[0] : value;
-}
-
-function positiveInteger(value: string | undefined): number {
-  if (!value || !/^\d+$/.test(value)) {
-    return 1;
-  }
-
-  const parsed = Number(value);
-  return Number.isSafeInteger(parsed) && parsed > 0 ? parsed : 1;
 }
 
 export default async function VehiclesPage({
@@ -48,7 +41,7 @@ export default async function VehiclesPage({
   const bodyType = firstValue(params.body);
   const maxPriceValue = firstValue(params.maxPrice);
   const maxPrice = maxPriceValue ? Number.parseInt(maxPriceValue, 10) : undefined;
-  const requestedPage = positiveInteger(firstValue(params.page));
+  const requestedPage = positivePageNumber(firstValue(params.page));
 
   const [vehicles, facets] = await Promise.all([
     getVehicles({
@@ -59,19 +52,13 @@ export default async function VehiclesPage({
     getVehicleFacets(),
   ]);
 
-  const totalPages = Math.max(1, Math.ceil(vehicles.length / vehiclesPerPage));
-  const currentPage = Math.min(requestedPage, totalPages);
-  const firstVehicleIndex = (currentPage - 1) * vehiclesPerPage;
-  const visibleVehicles = vehicles.slice(
-    firstVehicleIndex,
-    firstVehicleIndex + vehiclesPerPage,
-  );
-  const firstVisibleVehicle =
-    vehicles.length === 0 ? 0 : firstVehicleIndex + 1;
-  const lastVisibleVehicle = Math.min(
-    firstVehicleIndex + vehiclesPerPage,
-    vehicles.length,
-  );
+  const {
+    currentPage,
+    firstItem: firstVisibleVehicle,
+    items: visibleVehicles,
+    lastItem: lastVisibleVehicle,
+    totalPages,
+  } = paginateItems(vehicles, requestedPage);
 
   function pageHref(page: number): string {
     const query = new URLSearchParams();
@@ -141,7 +128,7 @@ export default async function VehiclesPage({
                     vehicles.length === 1 ? "vehicle" : "vehicles"
                   }`}
             </p>
-            <p className="hidden text-xs font-extrabold uppercase tracking-[0.14em] text-[#6e8396] sm:block">
+            <p className="hidden text-xs font-extrabold uppercase tracking-[0.14em] text-[#526a7f] sm:block">
               Sorted by newest stock
             </p>
           </div>

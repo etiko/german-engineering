@@ -1,6 +1,27 @@
 import type { NextConfig } from "next";
 
+const contentSecurityPolicy = [
+  "default-src 'self'",
+  "base-uri 'self'",
+  "connect-src 'self'",
+  "font-src 'self' data:",
+  "form-action 'self'",
+  "frame-ancestors 'none'",
+  "img-src 'self' data: blob: https://www.germanengineeringcarsales.co.uk https://img-uk3.cd5.uk",
+  "manifest-src 'self'",
+  "media-src 'self'",
+  "object-src 'none'",
+  "script-src 'self' 'unsafe-inline'",
+  "style-src 'self' 'unsafe-inline'",
+  "worker-src 'self' blob:",
+  "upgrade-insecure-requests",
+].join("; ");
+
 const securityHeaders = [
+  {
+    key: "Content-Security-Policy-Report-Only",
+    value: contentSecurityPolicy,
+  },
   {
     key: "X-Content-Type-Options",
     value: "nosniff",
@@ -20,6 +41,10 @@ const securityHeaders = [
   {
     key: "Permissions-Policy",
     value: "camera=(), microphone=(), geolocation=()",
+  },
+  {
+    key: "Cross-Origin-Opener-Policy",
+    value: "same-origin",
   },
 ];
 
@@ -105,6 +130,31 @@ const nextConfig: NextConfig = {
         destination: "/contact",
         permanent: true,
       },
+      {
+        source: "/testimonials",
+        destination: "/reviews",
+        permanent: true,
+      },
+      {
+        source: "/warranty",
+        destination: "/warranty-and-aftercare#warranty",
+        permanent: true,
+      },
+      {
+        source: "/pages-delivery",
+        destination: "/warranty-and-aftercare#delivery",
+        permanent: true,
+      },
+      {
+        source: "/pages-customer-aftercare",
+        destination: "/warranty-and-aftercare#aftercare",
+        permanent: true,
+      },
+      {
+        source: "/privacy_policy",
+        destination: "/privacy",
+        permanent: true,
+      },
       ...[
         "pages-servicing-bodyshop",
         "pages-mot-service",
@@ -130,13 +180,25 @@ const nextConfig: NextConfig = {
           source: `${redirect.source}/`,
         },
       ]),
-      ...["vehicles", "finance", "sell-your-car", "services", "contact"].map(
-        (route) => ({
-          source: `/${route}/`,
-          destination: `/${route}`,
-          permanent: true,
-        }),
-      ),
+      ...[
+        "vehicles",
+        "finance",
+        "sell-your-car",
+        "services",
+        "contact",
+        "reviews",
+        "warranty-and-aftercare",
+        "privacy",
+        "cookies",
+        "terms",
+        "complaints",
+        "accessibility",
+        "finance-disclosure",
+      ].map((route) => ({
+        source: `/${route}/`,
+        destination: `/${route}`,
+        permanent: true,
+      })),
       {
         source: "/vehicles/:slug/",
         destination: "/vehicles/:slug",

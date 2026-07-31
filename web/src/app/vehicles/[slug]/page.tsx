@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { PhoneIcon } from "@/components/ui/icons";
 import { VehicleCard } from "@/features/vehicles/components/vehicle-card";
 import {
@@ -13,6 +13,7 @@ import {
   formatMileage,
   formatPrice,
 } from "@/features/vehicles/formatters";
+import { vehicleDestination } from "@/features/vehicles/routing";
 import { siteConfig } from "@/lib/site";
 
 type VehiclePageProps = {
@@ -57,6 +58,10 @@ export default async function VehiclePage({ params }: VehiclePageProps) {
 
   if (!vehicle) {
     notFound();
+  }
+
+  if (vehicle.status === "sold") {
+    permanentRedirect(vehicleDestination(vehicle));
   }
 
   const relatedVehicles = (await getVehicles())
@@ -181,7 +186,7 @@ export default async function VehiclePage({ params }: VehiclePageProps) {
                   ["Registration year", vehicle.year.toString()],
                 ].map(([label, value]) => (
                   <div key={label} className="bg-[#f7f9fb] p-5">
-                    <dt className="text-xs font-extrabold uppercase tracking-[0.14em] text-[#6e8396]">
+                    <dt className="text-xs font-extrabold uppercase tracking-[0.14em] text-[#526a7f]">
                       {label}
                     </dt>
                     <dd className="mt-2 font-bold text-[#142a40]">{value}</dd>
@@ -225,7 +230,7 @@ export default async function VehiclePage({ params }: VehiclePageProps) {
                 </Link>
               </div>
 
-              <p className="mt-6 border-t border-[#eef3f6] pt-5 text-xs leading-6 text-[#6e8396]">
+              <p className="mt-6 border-t border-[#eef3f6] pt-5 text-xs leading-6 text-[#526a7f]">
                 Vehicle information should be confirmed with the dealership
                 before purchase. Finance is subject to status and approval.
               </p>

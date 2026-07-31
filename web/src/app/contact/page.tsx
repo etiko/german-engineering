@@ -84,7 +84,7 @@ export default function ContactPage() {
                 <MapPinIcon className="h-4 w-4" />
                 <span>Open Google Maps</span>
               </a>
-              <p className="mt-4 text-xs leading-6 text-[#6e8396]">
+              <p className="mt-4 text-xs leading-6 text-[#526a7f]">
                 The map opens only when selected, avoiding an automatic
                 third-party embed.
               </p>

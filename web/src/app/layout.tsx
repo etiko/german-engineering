@@ -4,6 +4,7 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { MobileContactBar } from "@/components/layout/mobile-contact-bar";
 import { BackToTop } from "@/components/ui/back-to-top";
+import { CookieConsent } from "@/features/consent/components/cookie-consent";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
@@ -65,6 +66,7 @@ export default function RootLayout({
           <SiteFooter />
           <BackToTop />
           <MobileContactBar />
+          <CookieConsent />
         </div>
       </body>
     </html>

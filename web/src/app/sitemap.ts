@@ -4,7 +4,7 @@ import { siteConfig } from "@/lib/site";
 
 const staticRoutes: Array<{
   path: string;
-  changeFrequency: "daily" | "weekly" | "monthly";
+  changeFrequency: "daily" | "weekly" | "monthly" | "yearly";
   priority: number;
 }> = [
   { path: "", changeFrequency: "weekly", priority: 1 },
@@ -13,6 +13,18 @@ const staticRoutes: Array<{
   { path: "/finance", changeFrequency: "monthly", priority: 0.8 },
   { path: "/services", changeFrequency: "monthly", priority: 0.8 },
   { path: "/contact", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/reviews", changeFrequency: "monthly", priority: 0.7 },
+  {
+    path: "/warranty-and-aftercare",
+    changeFrequency: "monthly",
+    priority: 0.7,
+  },
+  { path: "/privacy", changeFrequency: "yearly", priority: 0.3 },
+  { path: "/cookies", changeFrequency: "yearly", priority: 0.3 },
+  { path: "/terms", changeFrequency: "yearly", priority: 0.3 },
+  { path: "/complaints", changeFrequency: "yearly", priority: 0.4 },
+  { path: "/accessibility", changeFrequency: "yearly", priority: 0.3 },
+  { path: "/finance-disclosure", changeFrequency: "yearly", priority: 0.4 },
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

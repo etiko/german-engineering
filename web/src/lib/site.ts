@@ -3,6 +3,11 @@ import { env } from "@/lib/env";
 export const siteConfig = {
   name: "German Engineering Car Specialists Ltd",
   shortName: "German Engineering",
+  companyNumber: "10771039",
+  fcaNumber: "780109",
+  companiesHouseUrl:
+    "https://find-and-update.company-information.service.gov.uk/company/10771039",
+  fcaRegisterUrl: "https://register.fca.org.uk/s/search?q=780109&type=Companies",
   description:
     "Quality used cars and vans, vehicle finance, servicing, diagnostics and bodywork in Haverhill, Suffolk.",
   url: env.siteUrl,
@@ -17,6 +22,13 @@ export const siteConfig = {
   },
   addressHref:
     "https://www.google.com/maps/search/?api=1&query=Unit+9+Boundary+Road+Haverhill+Suffolk+CB9+7YH",
+  reviewProfiles: {
+    autoTrader:
+      "https://www.autotrader.co.uk/dealers/suffolk/haverhill/german-engineering-car-sales-limited-10002915",
+    google:
+      "https://www.google.com/maps/search/?api=1&query=German+Engineering+Car+Specialists+Haverhill",
+  },
+  warrantyProviderUrl: "https://www.warrantyfirst.co.uk/",
   openingHours: [
     {
       label: "Monday-Saturday",

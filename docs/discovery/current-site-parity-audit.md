@@ -25,9 +25,9 @@ At the audit snapshot:
 - The current listing pages linked to 15 cars and 2 vans.
 - The difference between 43 sitemap vehicles and 17 listed vehicles requires
   investigation before migration.
-- The replacement now uses a 17-vehicle public-site snapshot and six primary
-  customer routes: home, vehicles, vehicle detail, finance, sell your car and
-  services. The snapshot is temporary and does not replace a supported feed.
+- The replacement now uses a 17-vehicle public-site snapshot and covers the
+  primary sales, service, contact, trust, ownership and legal journeys. The
+  snapshot is temporary and does not replace a supported feed.
 
 The objective is not to recreate every legacy page. Repeated or weak pages
 should be consolidated, but every valuable customer promise, lead route and
@@ -37,25 +37,25 @@ indexed URL needs an explicit migration decision.
 
 | Area | Current-site capability | Replacement status | Required decision or work |
 |---|---|---|---|
-| Homepage | Sales, sourcing, workshop, finance and contact messaging | Core proposition, stock search and featured stock are present | Add reviews, opening hours, location and approved trust promises |
+| Homepage | Sales, sourcing, workshop, finance and contact messaging | Core proposition, stock search, featured stock, reviews, hours and location are present | Approve final trust wording and connect production data |
 | Inventory | Separate car and van listings, make/model and price search, sorting and make/body landing URLs | Combined 17-vehicle snapshot with cars, vans and make/body/max-price filters | Connect the live feed, add model/type/sorting and automate stock reconciliation |
 | Vehicle detail | Full description, multiple specifications and equipment, service/warranty copy, AutoTrader intelligence, callback and part exchange | One image, basic facts, short description, call/email and generic valuation link | Add full provider data, gallery, equipment/history, compliant finance, enquiry/test-drive and vehicle-linked part exchange |
 | Finance | Full credit application on the dealer platform | Initial non-sensitive email enquiry | Integrate the approved AutoConvert/provider handoff; do not reproduce credit-data storage without compliance approval |
 | Sell your car | Detailed straight-sale, commissioned-sale and part-exchange form with condition and image fields | Basic valuation enquiry with service-history and finance questions | Add secure lead delivery, image upload if required and intent-specific fields |
 | Part exchange | Dedicated form tied to a selected stock vehicle | Generic sell-your-car route | Preserve the target vehicle ID and distinguish part exchange from a cash valuation |
-| Workshop | Hub plus MOT, servicing, tyres, air conditioning and bodywork pages; selected enquiry/booking forms | Modern services hub with primary categories | Add a service/bodywork enquiry, requested date, registration, mileage and photo support |
+| Workshop | Hub plus MOT, servicing, tyres, air conditioning and bodywork pages; selected enquiry/booking forms | Modern services hub plus registration, mileage, requested-work and preferred-date enquiry | Replace email handoff with secure delivery; add photo support only if operationally required |
 | MOT | Published Class 4/Class 7 pricing, booking claim and courtesy-car claim | Mentioned within the services hub | Confirm current prices and promises, then add approved content and booking behaviour |
 | Recovery and accident management | Dedicated service pages | Accident support is summarised; recovery is absent | Confirm whether both remain active and either add routes or intentionally consolidate them |
-| Warranty | 30-day warranty claim and Warranty First extended-cover options | Only a generic vehicle disclaimer | Add approved warranty and eligibility content near vehicle decisions |
-| Delivery and aftercare | Dedicated ownership-support pages | Not represented | Add approved support content, either as pages or a consolidated ownership hub |
-| Reviews | Testimonials page plus AutoTrader and Google review links | Not represented | Add verified review content and external-source links |
+| Warranty | 30-day warranty claim and Warranty First extended-cover options | Cautious vehicle-specific guidance and Warranty First link on a consolidated support page | Approve exact eligibility, duration and exclusions before adding stronger claims |
+| Delivery and aftercare | Dedicated ownership-support pages | Consolidated ownership-support page with delivery and workshop aftercare guidance | Approve operational promises and any delivery pricing |
+| Reviews | Testimonials page plus AutoTrader and Google review links | Paraphrased feedback themes plus AutoTrader and Google source links | Confirm the preferred Google profile and any ratings displayed later |
 | Contact and location | Contact form, map, directions and opening hours | Dedicated contact/find-us page, confirmed details, linked maps, enquiry form and mobile actions | Replace email handoff with monitored server-side enquiry delivery |
 | Stock updates | External email subscription | Not represented | Decide whether to retain, replace or retire it |
 | Vacancies | Vacancies page and enquiry form | Not represented | Confirm recruitment need and create a page or an intentional redirect |
-| Privacy and cookies | Privacy page and legacy consent notice | No legal routes or consent manager | Add approved privacy, cookies and consent controls before analytics or third-party embeds |
-| Regulatory copy | Company and FCA details in the footer | Concise company/FCA footer statement | Obtain approved finance, commission, complaints and company wording |
+| Privacy and cookies | Privacy page and legacy consent notice | Privacy, cookie, terms, complaints and finance pages plus accept/reject/manage controls | Obtain legal/compliance approval and update the policies when providers are configured |
+| Regulatory copy | Company and FCA details in the footer | Current Companies House name/number, public FCA number and broker disclosure are present | Confirm FCA permissions, lender-panel, commission and complaints wording |
 | Analytics and providers | Placeholder GA tag, Visitor Chat, AutoConvert assets, AutoTrader and Google Maps links | No production integrations | Configure consent-aware analytics and only the providers the business approves |
-| SEO migration | Existing canonicals, sitemap, robots and legacy route footprint | Page metadata and vehicle JSON-LD only | Add sitemap, robots, redirects, sold-vehicle policy and Search Console migration |
+| SEO migration | Existing canonicals, sitemap, robots and legacy route footprint | Metadata, JSON-LD, generated sitemap/robots, content redirects, exact active-stock redirects and immediate sold-stock redirect policy | Complete Search Console launch work |
 
 ## Launch-critical gaps
 
@@ -89,34 +89,28 @@ customer confirmation, failure alerting and campaign/source retention for:
 
 ### 3. Trust and ownership information
 
-Warranty, delivery, aftercare and verified reviews materially affect purchase
-confidence and are prominent on the current site. They should not disappear
-during redesign. The copy must be approved rather than copied blindly because
-it creates customer and regulatory commitments.
+Warranty, delivery, aftercare and review-source content is now represented.
+The remaining blocker is approval of exact warranty, delivery and review claims
+because those create customer and regulatory commitments.
 
 ### 4. Contact and local-business information
 
-A dealership and workshop need an accessible find-us experience with approved
-opening hours, directions and a map or map link. This information should also
-be reflected consistently in local-business structured data.
+The replacement now has an accessible find-us experience, approved public
+hours, directions, map links and matching local-business structured data.
 
 ### 5. Legal, privacy and finance compliance
 
-The replacement still needs:
-
-- Privacy and cookie information.
-- Consent-aware loading for analytics, chat, maps and finance embeds.
-- Approved credit-broker, lender, commission and complaints wording.
-- Data-retention and form-consent behaviour.
-- Appropriate finance-provider handoff rather than local collection of a full
-  credit application.
+The replacement now has privacy, cookie, terms, complaints and finance
+disclosure routes, consent controls, retention information and non-sensitive
+initial finance enquiries. Compliance approval and the real finance-provider
+handoff remain external launch dependencies.
 
 ### 6. SEO migration controls
 
-There is no generated sitemap, robots route or redirect map yet. A launch must
-not strand the current listing, make, body-style, service and vehicle-detail
-URLs. Each current URL needs a destination, redirect status and validation
-result.
+Generated sitemap and robots routes, content redirects and exact active-stock
+redirects are implemented and covered by browser tests. Sold vehicles will
+redirect immediately to current stock once the feed supplies that status.
+Final Search Console migration remains outstanding.
 
 ## Important feature decisions
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { EnquiryForm } from "@/features/enquiries/components/enquiry-form";
 import { siteConfig } from "@/lib/site";
 
@@ -55,10 +56,17 @@ export default function FinancePage() {
                 </li>
               ))}
             </ul>
-            <p className="mt-8 border-t border-[#dce5ec] pt-6 text-xs leading-6 text-[#6e8396]">
+            <p className="mt-8 border-t border-[#dce5ec] pt-6 text-xs leading-6 text-[#526a7f]">
               Finance is subject to status and lender approval. Terms and
               conditions apply. German Engineering Car Specialists Ltd is a
-              credit broker, not a lender.
+              credit broker, not a lender.{" "}
+              <Link
+                href="/finance-disclosure"
+                className="font-bold text-[#1266a8] underline underline-offset-4"
+              >
+                Read the finance disclosure
+              </Link>
+              .
             </p>
           </aside>
 

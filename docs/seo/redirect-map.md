@@ -1,6 +1,6 @@
 # Legacy redirect map
 
-**Status:** Initial migration foundation  
+**Status:** Implemented migration foundation
 **Updated:** 30 July 2026
 
 The application uses permanent HTTP 308 redirects, the status emitted by
@@ -21,6 +21,11 @@ Next.js for method-preserving permanent redirects.
 | `/sellyourcarform/` | `/sell-your-car` |
 | `/partexchange/` | `/sell-your-car` |
 | `/find_us/` | `/contact` |
+| `/testimonials/` | `/reviews` |
+| `/warranty/` | `/warranty-and-aftercare#warranty` |
+| `/pages-delivery/` | `/warranty-and-aftercare#delivery` |
+| `/pages-customer-aftercare/` | `/warranty-and-aftercare#aftercare` |
+| `/privacy_policy/` | `/privacy` |
 | Servicing/bodyshop hub and current workshop subpages | `/services` |
 
 Legacy make and body identifiers are normalized so values such as
@@ -36,17 +41,22 @@ Unmatched stock IDs return a real 404 until the feed and sold-vehicle policy
 are implemented. They must not be redirected indiscriminately to the inventory
 page.
 
+Automated browser tests verify representative content, privacy and active-stock
+redirects without following them, including the expected HTTP 308 status and
+destination.
+
 ## Deferred destinations
 
 These legacy URLs need an approved equivalent before a permanent redirect is
 safe:
 
-- `/testimonials/`
-- `/warranty/`
-- `/pages-delivery/`
-- `/pages-customer-aftercare/`
 - `/pages-vacancies/`
-- `/privacy_policy/`
 
 Redirecting these pages to an unrelated destination would risk confusing users
 and being treated as a soft 404 by search engines.
+
+## Sold vehicles
+
+Once the approved source marks a vehicle sold, its current and legacy detail
+URLs redirect immediately to `/vehicles`. Unknown stock IDs still return 404.
+See `docs/seo/sold-vehicle-policy.md` for the full rule.

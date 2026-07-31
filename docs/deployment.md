@@ -7,8 +7,10 @@ The CI workflow runs for pull requests and pushes to `main`:
 1. Install dependencies with `npm ci`.
 2. Run ESLint.
 3. Run TypeScript without emitting files.
-4. Build the production application.
-5. Audit production dependencies at critical severity.
+4. Run Vitest unit and component tests.
+5. Build the production application.
+6. Install Chromium and run Playwright route, journey, redirect and axe checks.
+7. Audit production dependencies at critical severity.
 
 Enable branch protection after the first successful workflow:
 
@@ -48,6 +50,23 @@ Monitor `GET /api/health`. A healthy response is:
 ```
 
 The response is intentionally marked `no-store`.
+
+## Local release checks
+
+From `web/` with Node 22:
+
+```bash
+npm run lint
+npm run typecheck
+npm run test:unit
+SITE_URL=https://www.germanengineeringcarsales.co.uk npm run build
+npx playwright install chromium
+npm run test:e2e
+```
+
+Playwright starts the development server locally and the built production
+server in CI. Set `PLAYWRIGHT_BASE_URL` to run the suite against an already
+available deployment.
 
 ## Rollback
 
