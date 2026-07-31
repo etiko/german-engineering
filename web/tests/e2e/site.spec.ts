@@ -44,11 +44,16 @@ test("primary navigation identifies the current section", async ({ page }) => {
   for (const [path, label] of routes) {
     await page.goto(path);
 
-    await expect(
-      page
-        .getByRole("navigation", { name: "Primary navigation" })
-        .getByRole("link", { name: label }),
-    ).toHaveAttribute("aria-current", "page");
+    const activeLink = page
+      .getByRole("navigation", { name: "Primary navigation" })
+      .getByRole("link", { name: label });
+
+    await expect(activeLink).toHaveAttribute("aria-current", "page");
+    expect(
+      await activeLink.evaluate(
+        (element) => window.getComputedStyle(element).borderTopColor,
+      ),
+    ).toBe("rgb(18, 102, 168)");
   }
 });
 

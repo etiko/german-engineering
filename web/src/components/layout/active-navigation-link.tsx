@@ -26,9 +26,9 @@ export function ActiveNavigationLink({
 
   const className =
     variant === "desktop"
-      ? `border-b-2 px-0.5 py-2 text-xs font-extrabold uppercase tracking-[0.12em] transition ${
+      ? `border px-3 py-2 text-xs font-extrabold uppercase tracking-[0.12em] transition ${
           isActive
-            ? "border-[#1266a8] text-[#1266a8]"
+            ? "border-[#1266a8] bg-[#eef3f6] text-[#1266a8]"
             : "border-transparent text-[#142a40] hover:border-[#9fb5c5] hover:text-[#1266a8]"
         }`
       : `block border-b border-[#eef3f6] px-3 py-3 text-sm font-bold transition ${
